@@ -1,13 +1,13 @@
-console.log(data)
-
 function App() {
   return (
     <div className="App">
       <div className="product-list">
-        <button className="product" >
-          <div>Название</div>
-          <div>Цена c</div>
-        </button>
+        {data.map((product) => (
+          <button className="product" key={product.id}>
+            <div>{product.title}</div>
+            <div>{product.price} c</div>
+          </button>
+        ))}
       </div>
       <div className="basket">
         <div className="total">
@@ -15,7 +15,7 @@ function App() {
           <span>0 c</span>
         </div>
         <div>
-          <button className="product" >
+          <button className="product">
             <div>Название</div>
             <div>Цена c</div>
           </button>
@@ -25,5 +25,5 @@ function App() {
   );
 }
 
-const root = document.getElementById("root");
+const root = document.getElementById('root');
 ReactDOM.render(<App />, root);

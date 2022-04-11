@@ -4,7 +4,21 @@ function App() {
   const [basket, setBasket] = useState([]);
 
   const addToBasket = (item) => {
-    setBasket([...basket, item])
+    const newBasket = [...basket, item]
+    setBasket(newBasket)
+  }
+
+  const removeFromBasket = (product) => {
+    const newBasket = basket.filter((item) => item.id !== product.id)
+    setBasket(newBasket)
+  }
+
+  const getBasketTotal = () => {
+    let sum = 0
+    basket.forEach((item) => {
+      sum += item.price
+    })
+    return sum
   }
 
   return (
@@ -20,11 +34,15 @@ function App() {
       <div className="basket">
         <div className="total">
           <span>Итого:</span>
-          <span>0 c</span>
+          <span>{getBasketTotal()} c</span>
         </div>
         <div>
-          {basket.map((product) => (
-            <button className="product" key={product.id}>
+          {basket.map((product, i) => (
+            <button
+              className="product"
+              key={i}
+              onClick={() => removeFromBasket(product)}
+            >
               <div>{product.title}</div>
               <div>{product.price} c</div>
             </button>

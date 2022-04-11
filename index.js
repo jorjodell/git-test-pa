@@ -21,6 +21,8 @@ function App() {
     return sum
   }
 
+  console.log('hello from 2 user')
+
   return (
     <div className="App">
       <div className="product-list">
